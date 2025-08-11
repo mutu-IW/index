@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tonnes to Cubic Metres Calculator</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 50px; background-color: #f9f9f9; }
+    h2 { color: #333; }
+    label { font-size: 18px; }
+    input, select { padding: 10px; margin: 10px; font-size: 16px; border-radius: 5px; border: 1px solid #ccc; }
+    .output { font-weight: bold; font-size: 20px; margin-top: 20px; }
+    .container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: inline-block; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Tonnes → Cubic Metres Converter</h2>
+
+    <label for="material">Material:</label>
+    <select id="material">
+      <option value="2.4">GAP65</option>
+      <option value="2.3">GAP40</option>
+      <option value="2.2">GAP20</option>
+      <option value="1.4">Top Soil</option>
+    </select>
+    <br>
+
+    <label for="tonnes">Tonnes:</label>
+    <input type="number" id="tonnes" min="0" step="0.01">
+
+    <div class="output" id="result">m³: —</div>
+  </div>
+
+  <script>
+    const tonnesInput = document.getElementById('tonnes');
+    const materialSelect = document.getElementById('material');
+    const resultDiv = document.getElementById('result');
+
+    function calculate() {
+      const tonnes = parseFloat(tonnesInput.value);
+      const density = parseFloat(materialSelect.value);
+      if (!isNaN(tonnes)) {
+        const cubicMetres = tonnes / density;
+        resultDiv.textContent = `m³: ${cubicMetres.toFixed(2)}`;
+      } else {
+        resultDiv.textContent = "m³: —";
+      }
+    }
+
+    tonnesInput.addEventListener('input', calculate);
+    materialSelect.addEventListener('change', calculate);
+  </script>
+</body>
+</html>
