@@ -1,20 +1,66 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Tonnes to Cubic Metres Calculator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mutu Tonnes to Cubic Metres Calculator</title>
   <style>
-    body { font-family: Arial; text-align: center; margin-top: 50px; background-color: #f9f9f9; }
-    h2 { color: #333; }
-    label { font-size: 18px; }
-    input, select { padding: 10px; margin: 10px; font-size: 16px; border-radius: 5px; border: 1px solid #ccc; }
-    .output { font-weight: bold; font-size: 20px; margin-top: 20px; }
-    .container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: inline-block; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+    img.logo {
+      max-width: 180px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 1.4rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    label {
+      font-size: 1rem;
+      display: block;
+      margin-top: 10px;
+    }
+    select, input {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+    .output {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f1f1f1;
+      border-radius: 6px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Tonnes → Cubic Metres Converter</h2>
+    <img src="logo-orange-grey.svg" alt="Mutu Logo" class="logo">
+    <h2>Mutu Tonnes → Cubic Metres Calculator</h2>
 
     <label for="material">Material:</label>
     <select id="material">
@@ -23,10 +69,9 @@
       <option value="2.2">GAP20</option>
       <option value="1.4">Top Soil</option>
     </select>
-    <br>
 
     <label for="tonnes">Tonnes:</label>
-    <input type="number" id="tonnes" min="0" step="0.01">
+    <input type="number" id="tonnes" min="0" step="0.01" placeholder="Enter tonnes">
 
     <div class="output" id="result">m³: —</div>
   </div>
@@ -41,7 +86,7 @@
       const density = parseFloat(materialSelect.value);
       if (!isNaN(tonnes)) {
         const cubicMetres = tonnes / density;
-        resultDiv.textContent = `m³: ${cubicMetres.toFixed(2)}`;
+        resultDiv.textContent = "m³: " + cubicMetres.toFixed(2);
       } else {
         resultDiv.textContent = "m³: —";
       }
